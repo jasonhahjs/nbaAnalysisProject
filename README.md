@@ -97,9 +97,3 @@ This will:
 
 **Jason Ha**  
 GitHub: [@jasonhahjs](https://github.com/jasonhahjs)
-
-## Acknowledgments
-
-- NBA Stats API
-- swar/nba_api
-- Streamlit community for dashboard inspiration
