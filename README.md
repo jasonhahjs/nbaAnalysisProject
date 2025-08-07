@@ -19,7 +19,6 @@ nbaAnalysisProject/
 │   ├── Top Ten Players By Stat.py # Ranks top players by selected stat
 │   └── loadData.py              # Loads and prepares data from database
 ├── setup.py                     # Setup script (installs deps, runs download, launches app)
-├── requirements.txt             # Python dependency list (optional if using setup.py)
 └── README.md
 ```
 
@@ -89,7 +88,6 @@ This will:
 - Add player career averages
 - Expand to include playoff stats
 - Add team-wide analysis features
-- Export charts and comparisons to PDF or CSV
 
 ---
 
