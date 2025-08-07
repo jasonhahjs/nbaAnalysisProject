@@ -3,8 +3,6 @@
 ## Overview
 The **NBA Player Analysis App** is an interactive Streamlit application for exploring NBA player performance data using advanced stats, visual comparisons, and rankings. Built using Python, SQLite, and `nba_api`, the app is ideal for fans, students, and analysts looking to explore player efficiency and trends from 1996 onward.
 
-> “Instead of relying on hot takes, use real data to shape your NBA opinions.”
-
 ---
 
 ## Project Structure
@@ -86,53 +84,19 @@ This will:
 
 ---
 
-## Sample Metrics Available
+## Future Developments
 
-| Code           | Description               |
-|----------------|---------------------------|
-| `PTS_PER_GAME` | Points Per Game (PPG)     |
-| `REB_PER_GAME` | Rebounds Per Game (RPG)   |
-| `AST_PER_GAME` | Assists Per Game (APG)    |
-| `TS_PCT`       | True Shooting %           |
-| `W_PCT`        | Win %                     |
-| `TOV_PER_GAME` | Turnovers Per Game (TOPG) |
-| `MIN_PER_GAME` | Minutes Per Game (MPG)    |
-| `PLUS_MINUS`   | Plus-Minus                |
-
-More can be selected dynamically in the app!
+- Add player career averages
+- Expand to include playoff stats
+- Add team-wide analysis features
+- Export charts and comparisons to PDF or CSV
 
 ---
 
-## Future Enhancements
-
-- [ ] Add player career averages
-- [ ] Expand to include playoff stats
-- [ ] Add team-wide analysis features
-- [ ] Export charts and comparisons to PDF or CSV
-
----
-
-## About the Developer
+## Developer
 
 **Jason Ha**  
 GitHub: [@jasonhahjs](https://github.com/jasonhahjs)
-
-Built to combine a love of basketball, programming, and data analytics.  
-Feedback, contributions, and ideas are always welcome!
-
----
-
-## Screenshots
-
-(Add screenshots or GIFs of the interface if you’d like)
-
----
-
-## License
-
-This project is licensed under the MIT License.
-
----
 
 ## Acknowledgments
 
