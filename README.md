@@ -20,7 +20,7 @@ nbaAnalysisProject/
 │   └── loadData.py              # Loads and prepares data from database
 ├── setup.py                     # Setup script (installs deps, runs download, launches app)
 ├── requirements.txt             # Python dependency list (optional if using setup.py)
-└── README.md                    # You're reading it!
+└── README.md
 ```
 
 ---
