@@ -13,8 +13,8 @@ nbaAnalysisProject/
 │   ├── nba_stats.db               # SQLite database storing NBA player stats
 │   └── downloadData.py            # Script to download and populate stats via nba_api
 ├── streamlitApp/
-│   ├── About.py                   # Main dashboard landing page
-│   ├── Custom Visualization.py    # Visual stat comparison (scatter plot)
+│   ├── About.py                   # Landing page informing user of app functions
+│   ├── Custom Visualization.py    # Visual stat comparison page (scatter plot)
 │   ├── Player Side-By-Side.py     # Compare two players head-to-head
 │   ├── Top Ten Players By Stat.py # Ranks top players by selected stat
 │   └── loadData.py                # Loads and prepares data from database
