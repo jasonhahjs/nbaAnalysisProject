@@ -10,7 +10,7 @@ The **NBA Player Analysis App** is an interactive Streamlit application for expl
 ```bash
 nbaAnalysisProject/
 ├── data/
-│   ├── nba_stats.db               # SQLite database storing NBA player stats
+│   ├── nba_stats.db               # SQLite database storing NBA player stats (To be created upon first run of setup.py)
 │   └── downloadData.py            # Script to download and populate stats via nba_api
 ├── streamlitApp/
 │   ├── About.py                   # Landing page informing user of app functions
