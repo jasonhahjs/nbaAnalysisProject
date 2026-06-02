@@ -1,100 +1,161 @@
-# NBA Player Analysis Project
+# NBA Player Analysis Dashboard
 
-## Overview
-The **NBA Player Analysis App** is an interactive Streamlit application for exploring NBA player performance data using advanced stats, visual comparisons, and rankings. Built using Python, SQLite, and `nba_api`, the app is ideal for fans, students, and analysts looking to explore player efficiency and trends from 1996 onward.
+An interactive Streamlit dashboard for exploring NBA player performance across seasons. The app uses locally stored NBA statistics, derived performance metrics, interactive visualizations, and optional OpenAI-powered summaries to help users compare players and explain trends in the data.
 
----
+## Features
+
+- **Top 10 Players By Stat**: Rank players by scoring, rebounding, assists, efficiency, impact score, and other metrics across one or more seasons.
+- **Custom Visualization**: Build interactive scatter plots that compare any two selected statistics.
+- **Player Side-By-Side**: Compare two players across selected seasons and metrics, with optional AI-generated comparison notes.
+- **AI Scouting Report Generator**: Generate a scouting-style summary for a selected player using only the displayed statistical data.
 
 ## Project Structure
 
-```bash
-nbaAnalysisProject/
-├── data/
-│   ├── nba_stats.db               # SQLite database storing NBA player stats (To be created upon first run of setup.py)
-│   └── downloadData.py            # Script to download and populate stats via nba_api
-├── streamlitApp/
-│   ├── About.py                   # Landing page informing user of app functions
-│   ├── Custom Visualization.py    # Visual stat comparison page (scatter plot)
-│   ├── Player Side-By-Side.py     # Compare two players head-to-head
-│   ├── Top Ten Players By Stat.py # Ranks top players by selected stat
-│   └── loadData.py                # Loads and prepares data from database
-├── setup.py                       # Setup script (installs deps, runs download, launches app)
-├── .gitignore
-└── README.md                    
+```text
+NBA Dashboard Project/
+|-- data/
+|   |-- downloadData.py       # Downloads NBA data and builds the SQLite database
+|   `-- nba_stats.db          # Local SQLite database
+|-- streamlitApp/
+|   |-- About.py              # Main Streamlit entrypoint
+|   |-- aiInsights.py         # OpenAI-powered summary helpers
+|   |-- loadData.py           # Loads and prepares player data
+|   `-- pages/
+|       |-- AI Scouting Report Generator.py
+|       |-- Custom Visualization.py
+|       |-- Player Side-By-Side.py
+|       `-- Top Ten Players By Stat.py
+|-- .env.example              # Example environment variable file
+|-- .gitignore
+|-- README.md
+`-- setup.py                  # Creates venv, installs packages, downloads data, launches app
 ```
 
----
+## Tech Stack
 
-## Setup Instructions
+- Python
+- Streamlit
+- Pandas
+- Plotly
+- SQLite
+- nba_api
+- OpenAI API
+- python-dotenv
+
+## Setup
 
 ### 1. Clone the Repository
+
 ```bash
 git clone git@github.com:jasonhahjs/nbaAnalysisProject.git
 cd nbaAnalysisProject
 ```
 
 ### 2. Run the Setup Script
+
 ```bash
 python setup.py
 ```
 
-Running the setup script will:
-- Create a virtual environment (if missing)
-- Install required packages: `streamlit`, `pandas`, `nba_api`, `plotly`, etc.
-- Download and store NBA stats in a local database
-- Launch the Streamlit app automatically
+The setup script will:
 
-> Be wary as first-time setup may take a few minutes while all seasons are downloaded.
+- Create a virtual environment if one does not already exist.
+- Install the required Python packages.
+- Download NBA player data into the local SQLite database.
+- Launch the Streamlit app.
 
----
+The first run can take several minutes because the app needs to download and store NBA data.
 
-## App Features
+## Running the App Manually
 
-### Top 10 Players By Stat
-- Choose a season and stat (e.g., Points Per Game, True Shooting %)
-- View the top 10 players of the given stat with sortable and selectable columns
+If dependencies and data are already set up, run:
 
-### Visual Comparison
-- Create a scatter plot of any two stats
-- Filter by season and limit the number of players shown
-- Color-coded by team for readability
+```bash
+streamlit run streamlitApp/About.py
+```
 
-### Side-by-Side Player Comparison
-- Compare two players across seasons
-- Choose which metrics to view (PPG, TS%, AST, etc.)
-- View headshots and team of player alongside their stats
+On Windows, if you are using the included virtual environment:
 
----
+```powershell
+.\venv\Scripts\streamlit.exe run streamlitApp\About.py
+```
+
+## OpenAI API Setup
+
+The dashboard works without an OpenAI API key for normal data exploration. AI features require an API key.
+
+1. Create an API key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
+2. Copy `.env.example` to `.env`.
+3. Replace the placeholder value with your real key:
+
+```text
+OPENAI_API_KEY=your_real_api_key_here
+```
+
+The `.env` file should be placed in the project root, next to `setup.py`.
+
+Do not commit `.env` to GitHub. It is listed in `.gitignore` so your key stays private.
+
+OpenAI API usage may cost money. The app uses API calls only when you click an AI summary or scouting report button.
 
 ## Data Source
 
-- `nba_api`: Data is pulled from the official NBA Stats API
-- Filtered for real NBA teams only (excluding G-League, WNBA, etc.)
-- Stats exclude players with fewer than 20 games played
+Player data is pulled with `nba_api`, stored locally in SQLite, and loaded into the Streamlit dashboard with Pandas.
 
----
+The app also calculates derived metrics such as:
 
-## Technologies Used
+- Points, rebounds, assists, steals, blocks, turnovers, and minutes per game
+- True shooting percentage
+- Basic impact score
+- Scoring efficiency profile
+- Availability profile
 
-- Streamlit- Web UI & dashboard
-- nba_api – NBA stats ingestion
-- SQLite – Local database
-- Pandas – Data manipulation
-- Plotly – Interactive charts & graphs
+## Current Pages
 
----
+- `About.py`
+- `Top Ten Players By Stat.py`
+- `Custom Visualization.py`
+- `Player Side-By-Side.py`
+- `AI Scouting Report Generator.py`
 
-## Future Enhancements
+The former Data Assistant page has been removed from the project.
 
-- [ ] Add player career averages
-- [ ] Expand to include playoff stats
-- [ ] Add team-wide analysis features
-- [ ] Add machine learning-driven player clustering
+## Troubleshooting
 
----
+### `OPENAI_API_KEY is not set`
 
-## About the Developer
+Make sure your `.env` file is in the project root and contains:
 
-**Jason Ha**  
-GitHub: [@jasonhahjs](https://github.com/jasonhahjs)
-LinkedIn: [@jasonhahjs](https://www.linkedin.com/in/jasonhahjs/)
+```text
+OPENAI_API_KEY=your_real_api_key_here
+```
+
+Restart Streamlit after editing `.env`.
+
+### `401 invalid_api_key`
+
+The app found an API key, but the key is invalid or still set to the placeholder. Create a new key from the OpenAI dashboard and update `.env`.
+
+### Streamlit Still Shows an Old Page
+
+Stop and restart the Streamlit server:
+
+```powershell
+Ctrl + C
+.\venv\Scripts\streamlit.exe run streamlitApp\About.py
+```
+
+## Future Improvements
+
+- Add player career averages.
+- Add playoff statistics.
+- Add team-level analysis.
+- Add more advanced impact metrics.
+- Add saved chart exports.
+
+## Developer
+
+Created by **Jason Ha**
+
+- GitHub: [@jasonhahjs](https://github.com/jasonhahjs)
+- LinkedIn: [@jasonhahjs](https://www.linkedin.com/in/jasonhahjs/)
